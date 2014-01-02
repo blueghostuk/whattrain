@@ -1,4 +1,11 @@
 ﻿body {
-  min-height: 2000px;
   padding-top: 70px;
+}
+
+div.platform{
+    text-align: center;
+}
+
+span.berth{
+    text-align:center;
 }

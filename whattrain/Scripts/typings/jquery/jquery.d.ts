@@ -349,6 +349,14 @@ interface JQueryEventConstructor {
 }
 
 /**
+ * The interface used to specify coordinates.
+ */
+interface JQueryCoordinates {
+    left: number;
+    top: number;
+}
+
+/**
  * The interface used to specify easing functions.
  */
 interface JQueryEasing {
@@ -631,7 +639,7 @@ interface JQueryStatic {
     /**
      * Parses a string into an XML document.
      *
-     * @param dataa well-formed XML string to be parsed
+     * @param data a well-formed XML string to be parsed
      */
     parseXML(data: string): XMLDocument;
 
@@ -783,10 +791,27 @@ interface JQuery {
      */
     hasClass(className: string): boolean;
 
+    /**
+     * Get the HTML contents of the first element in the set of matched elements.
+     */
     html(): string;
+    /**
+     * Set the HTML contents of each element in the set of matched elements.
+     *
+     * @param htmlString A string of HTML to set as the content of each matched element.
+     */
     html(htmlString: string): JQuery;
-    html(htmlContent: (index: number, oldhtml: string) => string): JQuery;
-    html(obj: JQuery): JQuery;
+    /**
+     * Set the HTML contents of each element in the set of matched elements.
+     *
+     * @param func A function returning the HTML content to set. Receives the index position of the element in the set and the old HTML value as arguments. jQuery empties the element before calling the function; use the oldhtml argument to reference the previous content. Within the function, this refers to the current element in the set.
+     */
+    html(func: (index: number, oldhtml: string) => string): JQuery;
+    /**
+     * Set the HTML contents of each element in the set of matched elements.
+     *
+     * @param func A function returning the HTML content to set. Receives the index position of the element in the set and the old HTML value as arguments. jQuery empties the element before calling the function; use the oldhtml argument to reference the previous content. Within the function, this refers to the current element in the set.
+     */
 
     /**
      * Get the value of a property for the first element in the set of matched elements.
@@ -955,20 +980,73 @@ interface JQuery {
      */
     css(properties: Object): JQuery;
 
+    /**
+     * Get the current computed height for the first element in the set of matched elements.
+     */
     height(): number;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param value An integer representing the number of pixels, or an integer with an optional unit of measure appended (as a string).
+     */
     height(value: number): JQuery;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param value An integer representing the number of pixels, or an integer with an optional unit of measure appended (as a string).
+     */
     height(value: string): JQuery;
-    height(func: (index: any, height: any) => any): JQuery;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param func A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.
+     */
+    height(func: (index: number, height: number) => number): JQuery;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param func A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.
+     */
+    height(func: (index: number, height: string) => string): JQuery;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param func A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.
+     */
+    height(func: (index: number, height: string) => number): JQuery;
+    /**
+     * Set the CSS height of every matched element.
+     *
+     * @param func A function returning the height to set. Receives the index position of the element in the set and the old height as arguments. Within the function, this refers to the current element in the set.
+     */
+    height(func: (index: number, height: number) => string): JQuery;
 
+    /**
+     * Get the current computed height for the first element in the set of matched elements, including padding but not border.
+     */
     innerHeight(): number;
-    innerHeight(value: number): JQuery;
 
+    /**
+     * Get the current computed width for the first element in the set of matched elements, including padding but not border.
+     */
     innerWidth(): number;
-    innerWidth(value: number): JQuery;
 
-    offset(): { left: number; top: number; };
-    offset(coordinates: any): JQuery;
-    offset(func: (index: any, coords: any) => any): JQuery;
+    /**
+     * Get the current coordinates of the first element in the set of matched elements, relative to the document.
+     */
+    offset(): JQueryCoordinates;
+    /**
+     * An object containing the properties top and left, which are integers indicating the new top and left coordinates for the elements.
+     *
+     * @param coordinates An object containing the properties top and left, which are integers indicating the new top and left coordinates for the elements.
+     */
+    offset(coordinates: JQueryCoordinates): JQuery;
+    /**
+     * An object containing the properties top and left, which are integers indicating the new top and left coordinates for the elements.
+     *
+     * @param func A function to return the coordinates to set. Receives the index of the element in the collection as the first argument and the current coordinates as the second argument. The function should return an object with the new top and left properties.
+     */
+    offset(func: (index: number, coords: JQueryCoordinates) => JQueryCoordinates): JQuery;
 
     outerHeight(includeMargin?: boolean): number;
     outerHeight(value: number, includeMargin?: boolean): JQuery;
@@ -984,10 +1062,46 @@ interface JQuery {
     scrollTop(): number;
     scrollTop(value: number): JQuery;
 
+    /**
+     * Get the current computed width for the first element in the set of matched elements.
+     */
     width(): number;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
+     */
     width(value: number): JQuery;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
+     */
     width(value: string): JQuery;
-    width(func: (index: any, height: any) => any): JQuery;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param func A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.
+     */
+    width(func: (index: number, width: number) => number): JQuery;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param func A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.
+     */
+    width(func: (index: number, width: string) => string): JQuery;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param func A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.
+     */
+    width(func: (index: number, width: string) => number): JQuery;
+    /**
+     * Set the CSS width of each element in the set of matched elements.
+     *
+     * @param func A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.
+     */
+    width(func: (index: number, width: number) => string): JQuery;
 
     // Data
     clearQueue(queueName?: string): JQuery;

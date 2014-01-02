@@ -27,6 +27,7 @@ namespace whattrain.App_Start
                 "~/Scripts/app/global.js",
                 "~/Scripts/app/webApi.js",
                 "~/Scripts/app/whattrain.js",
+                "~/Scripts/app/stations.js",
                 "~/Scripts/app/app.js"));
 
 

@@ -26,16 +26,46 @@ var WhatTrain;
                 this.size = size;
                 this.display = display;
                 this.berth = berth;
+                this.contents = ko.observable();
             }
             return PlatformSection;
         })();
         Models.PlatformSection = PlatformSection;
+
+        var BerthContentsExtended = (function () {
+            function BerthContentsExtended(parent) {
+                this.update(parent);
+
+                var self = this;
+
+                this.toString = ko.computed(function () {
+                    if (self.m_Item1 && self.m_Item2) {
+                        return self.m_Item2;
+                    }
+                    return "";
+                });
+            }
+            BerthContentsExtended.prototype.update = function (parent) {
+                if (parent) {
+                    this.m_Item1 = parent.m_Item1;
+                    this.m_Item2 = parent.m_Item2;
+                } else {
+                    this.m_Item1 = null;
+                    this.m_Item2 = null;
+                }
+            };
+            return BerthContentsExtended;
+        })();
+        Models.BerthContentsExtended = BerthContentsExtended;
 
         var BerthIdentifier = (function () {
             function BerthIdentifier(areaId, name) {
                 this.areaId = areaId;
                 this.name = name;
             }
+            BerthIdentifier.prototype.toString = function () {
+                return this.areaId + '-' + this.name;
+            };
             return BerthIdentifier;
         })();
         Models.BerthIdentifier = BerthIdentifier;
