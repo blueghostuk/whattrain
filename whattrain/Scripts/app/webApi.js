@@ -1,12 +1,9 @@
+/// <reference path="global.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../typings/moment/moment.d.ts" />
+
 var TrainNotifier;
 (function (TrainNotifier) {
-    var Common = (function () {
-        function Common() {
-        }
-        return Common;
-    })();
-    TrainNotifier.Common = Common;
-
     var WebApi = (function () {
         function WebApi(serverSettings) {
             this.serverSettings = serverSettings;
@@ -32,10 +29,12 @@ var TrainNotifier;
             return $.getJSON(this.getBaseUrl() + "/Stanox/" + stanox);
         };
 
-        WebApi.prototype.getStationByLocation = function (lat, lon) {
+        WebApi.prototype.getStationByLocation = function (lat, lon, limit) {
+            if (typeof limit === "undefined") { limit = 5; }
             return $.getJSON(this.getBaseUrl() + "/Station/GeoLookup", $.extend({}, this.getArgs(), {
                 lat: lat,
-                lon: lon
+                lon: lon,
+                limit: limit
             }));
         };
 
@@ -134,6 +133,10 @@ var TrainNotifier;
             }));
         };
 
+        WebApi.prototype.getTrainMovementLink = function (headcode, crsCode, platform) {
+            return $.getJSON(this.getBaseUrl() + "/TrainMovement/Headcode/" + headcode + "/" + crsCode + "/" + platform + "/", this.getArgs());
+        };
+
         WebApi.prototype.getPPMData = function (operatorCode, name) {
             return $.getJSON(this.getBaseUrl() + "/PPM/", $.extend({}, this.getArgs(), {
                 operatorCode: operatorCode,
@@ -160,6 +163,12 @@ var TrainNotifier;
 
 var TrainNotifier;
 (function (TrainNotifier) {
+    (function (LiveTrainStopSource) {
+        LiveTrainStopSource[LiveTrainStopSource["Trust"] = 0] = "Trust";
+        LiveTrainStopSource[LiveTrainStopSource["TD"] = 1] = "TD";
+    })(TrainNotifier.LiveTrainStopSource || (TrainNotifier.LiveTrainStopSource = {}));
+    var LiveTrainStopSource = TrainNotifier.LiveTrainStopSource;
+
     (function (EventType) {
         EventType[EventType["Departure"] = 1] = "Departure";
         EventType[EventType["Arrival"] = 2] = "Arrival";
@@ -280,6 +289,14 @@ var TrainNotifier;
     })();
     TrainNotifier.CancellationCodes = CancellationCodes;
 
+    (function (STPIndicatorValue) {
+        STPIndicatorValue[STPIndicatorValue["Cancellation"] = 1] = "Cancellation";
+        STPIndicatorValue[STPIndicatorValue["STP"] = 2] = "STP";
+        STPIndicatorValue[STPIndicatorValue["Overlay"] = 3] = "Overlay";
+        STPIndicatorValue[STPIndicatorValue["Permanent"] = 4] = "Permanent";
+    })(TrainNotifier.STPIndicatorValue || (TrainNotifier.STPIndicatorValue = {}));
+    var STPIndicatorValue = TrainNotifier.STPIndicatorValue;
+
     var STPIndicator = (function () {
         function STPIndicator() {
         }
@@ -298,22 +315,22 @@ var TrainNotifier;
             }
         };
         STPIndicator.Cancellation = {
-            STPIndicatorId: 1,
+            STPIndicatorId: 1 /* Cancellation */,
             Code: 'C',
             Description: 'Cancellation Of Permanent Schedule'
         };
         STPIndicator.STP = {
-            STPIndicatorId: 2,
+            STPIndicatorId: 2 /* STP */,
             Code: 'N',
             Description: 'STP'
         };
         STPIndicator.Overlay = {
-            STPIndicatorId: 3,
+            STPIndicatorId: 3 /* Overlay */,
             Code: 'O',
             Description: 'Overlay'
         };
         STPIndicator.Permanent = {
-            STPIndicatorId: 4,
+            STPIndicatorId: 4 /* Permanent */,
             Code: 'P',
             Description: 'Permanent'
         };

@@ -1,5 +1,26 @@
 ﻿var TrainNotifier;
 (function (TrainNotifier) {
+    var Common = (function () {
+        function Common() {
+        }
+        Common.trimNullableString = function (str) {
+            if (str)
+                return str.trim();
+            return null;
+        };
+
+        Common.coalesce = function (str) {
+            for (var i = 0; i < str.length; i++) {
+                var trimmed = Common.trimNullableString(str[i]);
+                if (trimmed && trimmed.length > 0) {
+                    return trimmed;
+                }
+            }
+            return null;
+        };
+        return Common;
+    })();
+    TrainNotifier.Common = Common;
     var DateTimeFormats = (function () {
         function DateTimeFormats() {
         }
@@ -11,23 +32,41 @@
             return null;
         };
 
-        DateTimeFormats.formatDateTimeString = function (dateTime) {
+        DateTimeFormats.formatDateTimeString = function (dateTime, format) {
+            if (typeof format === "undefined") { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
             if (dateTime) {
                 var timeMoment = moment(dateTime);
-                return DateTimeFormats.formatTimeMoment(timeMoment);
+                return DateTimeFormats.formatTimeMoment(timeMoment, format);
             }
             return null;
         };
 
-        DateTimeFormats.formatTimeMoment = function (timeMoment) {
+        DateTimeFormats.formatTimeDuration = function (duration) {
+            if (duration) {
+                return DateTimeFormats.padString(duration.hours().toString()) + ":" + DateTimeFormats.padString(duration.minutes().toString());
+            }
+
+            return null;
+        };
+
+        DateTimeFormats.formatTimeMoment = function (timeMoment, format) {
+            if (typeof format === "undefined") { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
             if (timeMoment && timeMoment.isValid()) {
-                var ts = timeMoment.format(TrainNotifier.DateTimeFormats.shortTimeFormat);
+                var ts = timeMoment.format(format);
                 if (timeMoment.seconds() === 30) {
                     ts += TrainNotifier.CommonStrings.halfMinute;
                 }
                 return ts;
             }
             return null;
+        };
+
+        DateTimeFormats.padString = function (input) {
+            if (input.length == 0)
+                return "00";
+            if (input.length == 1)
+                return "0" + input;
+            return input;
         };
         DateTimeFormats.timeUrlFormat = "HH-mm";
         DateTimeFormats.timeFormat = "HH:mm:ss";
@@ -40,7 +79,7 @@
         DateTimeFormats.dateTitleFormat = "ddd Do MMM YYYY";
         DateTimeFormats.dateTimeApiFormat = "YYYY-MM-DDTHH:mm";
         DateTimeFormats.timeFrameMinutesBefore = 15;
-        DateTimeFormats.timeFrameHours = 1;
+        DateTimeFormats.timeFrameHours = 0.75;
         return DateTimeFormats;
     })();
     TrainNotifier.DateTimeFormats = DateTimeFormats;
@@ -48,7 +87,7 @@
     var CommonStrings = (function () {
         function CommonStrings() {
         }
-        CommonStrings.halfMinute = "�";
+        CommonStrings.halfMinute = "½";
         return CommonStrings;
     })();
     TrainNotifier.CommonStrings = CommonStrings;

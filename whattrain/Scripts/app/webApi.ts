@@ -1,10 +1,13 @@
+/// <reference path="global.ts" />
+/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../typings/moment/moment.d.ts" />
 
 interface IWebApi {
     getStanox(stanox: string): JQueryPromise<any>;
     getStanoxByCrsCode(crsCode: string): JQueryPromise<any>;
 
     getStations(): JQueryPromise<any>;
-    getStationByLocation(lat: number, lon: number): JQueryPromise<any>;
+    getStationByLocation(lat: number, lon: number, limit?: number): JQueryPromise<any>;
 
     getTrainMovementByUid(uid: string, date: string): JQueryPromise<any>;
     getTrainMovementById(id: string): JQueryPromise<any>;
@@ -19,6 +22,8 @@ interface IWebApi {
     getTrainMovementsCallingAtStation(crsCode: string, startDate: string, endDate: string, atocCode?: string): JQueryPromise<any>;
     getTrainMovementsBetweenLocations(fromStanox: string, toStanox: string, startDate: string, endDate: string, atocCode?: string): JQueryPromise<any>;
     getTrainMovementsBetweenStations(fromCrsCode: string, toCrsCode: string, startDate: string, endDate: string, atocCode?: string): JQueryPromise<any>;
+
+    getTrainMovementLink(headcode: string, crsCode: string, platform: string): JQueryPromise<any>;
 
     getTrainMovementsNearLocation(lat: number, lon: number, limit: number): JQueryPromise<any>;
 
@@ -39,10 +44,6 @@ interface IEstimate {
 }
 
 module TrainNotifier {
-    export class Common {
-
-        static serverSettings: IServerSettings;
-    }
 
     export class WebApi implements IWebApi {
 
@@ -70,10 +71,11 @@ module TrainNotifier {
             return $.getJSON(this.getBaseUrl() + "/Stanox/" + stanox);
         }
 
-        getStationByLocation(lat: number, lon: number) {
+        getStationByLocation(lat: number, lon: number, limit: number = 5) {
             return $.getJSON(this.getBaseUrl() + "/Station/GeoLookup", $.extend({}, this.getArgs(), {
                 lat: lat,
-                lon: lon
+                lon: lon,
+                limit: limit
             }));
         }
 
@@ -171,6 +173,10 @@ module TrainNotifier {
             }));
         }
 
+        getTrainMovementLink(headcode: string, crsCode: string, platform: string) {
+            return $.getJSON(this.getBaseUrl() + "/TrainMovement/Headcode/" + headcode + "/" + crsCode + "/" + platform + "/", this.getArgs());
+        }
+
         getPPMData(operatorCode: string, name: string) {
             return $.getJSON(this.getBaseUrl() + "/PPM/", $.extend({}, this.getArgs(), {
                 operatorCode: operatorCode,
@@ -215,6 +221,11 @@ interface IBerthContents {
 }
 
 module TrainNotifier {
+
+    export enum LiveTrainStopSource {
+        Trust = 0,
+        TD = 1
+    }
 
     export enum EventType {
         Departure = 1,
@@ -325,24 +336,31 @@ module TrainNotifier {
         public static EnRoute = "EN ROUTE";
     }
 
+    export enum STPIndicatorValue {
+        Cancellation = 1,
+        STP = 2,
+        Overlay = 3,
+        Permanent = 4
+    }
+
     export class STPIndicator {
         public static Cancellation: ISTPIndicator = {
-            STPIndicatorId: 1,
+            STPIndicatorId: STPIndicatorValue.Cancellation,
             Code: 'C',
             Description: 'Cancellation Of Permanent Schedule'
         }
         public static STP: ISTPIndicator = {
-            STPIndicatorId: 2,
+            STPIndicatorId: STPIndicatorValue.STP,
             Code: 'N',
             Description: 'STP'
         }
         public static Overlay: ISTPIndicator = {
-            STPIndicatorId: 3,
+            STPIndicatorId: STPIndicatorValue.Overlay,
             Code: 'O',
             Description: 'Overlay'
         }
         public static Permanent: ISTPIndicator = {
-            STPIndicatorId: 4,
+            STPIndicatorId: STPIndicatorValue.Permanent,
             Code: 'P',
             Description: 'Permanent'
         }
@@ -661,13 +679,14 @@ module TrainNotifier {
 }
 
 interface IRunningTrainActualStop {
-    EventType: number;
+    EventType: TrainNotifier.EventType;
     PlannedTimestamp: string;
     ActualTimestamp?: string;
     Line?: string;
     Platform?: string;
     ScheduleStopNumber: number;
     TiplocStanoxCode: string;
+    Source: TrainNotifier.LiveTrainStopSource;
 }
 
 interface IRunningTrainActual {
@@ -675,7 +694,7 @@ interface IRunningTrainActual {
     TrainId: string;
     HeadCode: string;
     TrainServiceCode: string;
-    State: number;
+    State: TrainNotifier.TrainState;
     ScheduleOriginStanoxCode: string;
     OriginDepartTimestamp: string;
     Stops: IRunningTrainActualStop[];
@@ -704,7 +723,7 @@ interface IScheduleStatus {
 }
 
 interface ISTPIndicator {
-    STPIndicatorId: number;
+    STPIndicatorId: TrainNotifier.STPIndicatorValue;
     Code: string;
     Description: string;
 }
@@ -754,6 +773,7 @@ interface IReinstatement {
     NewOriginStanoxCode: string;
     PlannedDepartureTime: string;
 }
+
 interface IChangeOfOrigin {
     NewOriginStanoxCode: string;
     ReasonCode: string;
@@ -768,7 +788,7 @@ interface IRunningScheduleTrain {
     EndDate: string;
     AtocCode: IAtocCode;
     ScheduleStatusId: number;
-    STPIndicatorId: number;
+    STPIndicatorId: TrainNotifier.STPIndicatorValue;
     PowerTypeId?: TrainNotifier.PowerTypeId;
     CategoryTypeId?: TrainNotifier.CategoryTypeId;
     Speed?: number;
@@ -803,6 +823,28 @@ interface IAssociation {
     DateType: number;
     // not used
     Schedule?: any;
-    STPIndicator: number;
+    STPIndicator: TrainNotifier.STPIndicatorValue;
     Location: ITiploc;
+}
+
+interface IPPMRegion {
+    Description: string;
+    OperatorCode?: string;
+    SectorCode?: string;
+}
+
+interface IPPMData {
+    CancelVeryLate: number;
+    Code: string;
+    Late: number;
+    Name: string;
+    OnTime: number;
+    Timestamp: string;
+    Total: number;
+    Trend: number;
+}
+
+interface ITrainMovementLink {
+    TrainUid: string;
+    OriginDepartTimestamp: string;
 }

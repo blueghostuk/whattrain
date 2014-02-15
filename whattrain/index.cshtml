@@ -41,16 +41,12 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">whattrain.co.uk</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -59,18 +55,15 @@
     <div class="container">
 
         <!-- Main component for a primary marketing message or call to action -->
-        <div class="jumbotron" id="station">
-            <h1 data-bind="text: name"></h1>
-            <!-- ko foreach: platforms -->
-            <div class="row">
-                <!-- ko foreach: sections -->
-                <div data-bind=" attr: { 'class' : 'col-md-' + size + ' platform' }">
-                    <h2 data-bind="text: name, visible: display"></h2>
-                    <span class="berth" data-bind="attr: { 'data-berth': berth }, html: contents"></span>
-                </div>
-                <!-- /ko -->
+        <div class="jumbotron">
+            <h1><a href="http://www.trainnotifier.co.uk/search/at/WVH" target="_blank" title="View full schedule">Wolverhampton</a></h1>
+            <div class="row" style="overflow:auto;">
+                @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/app/svg/wvh.svg")))
             </div>
-            <!-- /ko -->
+            <div class="row">
+                <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
+                <div class="alert alert-info">More stations to be added in due time</div>
+            </div>
         </div>
         @{
             var adClient = System.Configuration.ConfigurationManager.AppSettings["ad_client"];

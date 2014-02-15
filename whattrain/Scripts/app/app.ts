@@ -1,12 +1,8 @@
 
 var webApi: IWebApi;
-var currentStation: IStation;
-
 $(function () {
     webApi = new TrainNotifier.WebApi();
 
-    var currentStation = stations[0];
-    ko.applyBindings(currentStation, $("#station").get(0));
     reloadBerths();
 });
 
@@ -17,12 +13,24 @@ function reloadBerths() {
 function loadBerths() {
     $(".berth").each(function () {
         var self = this;
-        webApi.getBerthContents($(self).data("berth")).done(function (berth: IBerthContents) {
-            if (ko.contextFor(self).$data.contents()) {
-                ko.contextFor(self).$data.contents().update(berth);
-            } else {
-                ko.contextFor(self).$data.contents(new WhatTrain.Models.BerthContentsExtended(berth));
-            }
-        });
+        var berth: string = $(self).data("berth");
+        if (berth && berth.length > 0) {
+            webApi.getBerthContents($(self).data("berth")).done(function (berth: IBerthContents) {
+                if (berth) {
+                    $(self).html(berth.m_Item2);
+                    webApi.getTrainMovementLink(berth.m_Item2, "WVH", $(self).data("platform")).done(function (link: ITrainMovementLink) {
+                        var date = moment(link.OriginDepartTimestamp);
+                        $(self).click(function () {
+                            window.open("http://www.trainnotifier.co.uk/trains/" + link.TrainUid + "/" + date.format(TrainNotifier.DateTimeFormats.dateUrlFormat));
+                        });
+                    });
+                } else {
+                    $(self).html("");
+                    $(self).click(function () {
+                        return;
+                    });
+                }
+            })
+        }
     });
 }
