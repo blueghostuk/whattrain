@@ -149,3 +149,9 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+#nuget packages folders
+packages
+
+# ignore local azure config
+Web.azure.config
