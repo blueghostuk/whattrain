@@ -260,10 +260,10 @@
          sodipodi:role="line"
          id="tspan3066"
          class="berth"
-         data-berth=""
+         data-berth="WO-0076"
          data-platform="6"
          x="887.14282"
-         y="433.79074">TBC</tspan></text>
+         y="433.79074"></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
@@ -289,6 +289,7 @@
          id="tspan3066-7-0"
          class="berth"
          data-berth="WO-0085"
+         data-berth-add="WO-0099"
          data-platform="2"
          x="463.91406"
          y="643.88"></tspan></text>

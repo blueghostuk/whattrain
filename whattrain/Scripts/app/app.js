@@ -2,6 +2,16 @@ var webApi;
 $(function () {
     webApi = new TrainNotifier.WebApi();
 
+    $(".berth").click(function () {
+        var uid = $(this).data("uid");
+        var date = $(this).data("date");
+
+        if (uid && uid.length > 0 && date && date.length > 0) {
+            var dateTs = moment(date);
+            window.open("http://www.trainnotifier.co.uk/trains/" + uid + "/" + dateTs.format(TrainNotifier.DateTimeFormats.dateUrlFormat));
+        }
+    });
+
     reloadBerths();
 });
 
@@ -16,18 +26,18 @@ function loadBerths() {
         if (berth && berth.length > 0) {
             webApi.getBerthContents($(self).data("berth")).done(function (berth) {
                 if (berth) {
-                    $(self).html(berth.m_Item2);
                     webApi.getTrainMovementLink(berth.m_Item2, "WVH", $(self).data("platform")).done(function (link) {
-                        var date = moment(link.OriginDepartTimestamp);
-                        $(self).click(function () {
-                            window.open("http://www.trainnotifier.co.uk/trains/" + link.TrainUid + "/" + date.format(TrainNotifier.DateTimeFormats.dateUrlFormat));
-                        });
+                        if (link) {
+                            $(self).data("uid", link.TrainUid);
+                            $(self).data("date", link.OriginDepartTimestamp);
+                        } else {
+                            $(self).data("uid", "");
+                            $(self).data("date", "");
+                        }
+                        $(self).html(berth.m_Item2);
                     });
                 } else {
                     $(self).html("");
-                    $(self).click(function () {
-                        return;
-                    });
                 }
             });
         }
