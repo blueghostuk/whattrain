@@ -1,5 +1,6 @@
 
 var webApi: IWebApi;
+
 $(function () {
     webApi = new TrainNotifier.WebApi();
 
@@ -27,7 +28,7 @@ function loadBerths() {
         if (berth && berth.length > 0) {
             webApi.getBerthContents($(self).data("berth")).done(function (berth: IBerthContents) {
                 if (berth) {
-                    webApi.getTrainMovementLink(berth.m_Item2, "WVH", $(self).data("platform")).done(function (link: ITrainMovementLink) {
+                    webApi.getTrainMovementLink(berth.m_Item2, TrainNotifier.Common.stationCode, $(self).data("platform")).done(function (link: ITrainMovementLink) {
                         if (link) {
                             $(self).data("uid", link.TrainUid);
                             $(self).data("date", link.OriginDepartTimestamp);

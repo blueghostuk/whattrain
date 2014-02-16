@@ -11,6 +11,8 @@ module TrainNotifier {
         static serverSettings: IServerSettings;
         static webApi: IWebApi;
 
+        static stationCode: string;
+
         static trimNullableString(str: string) {
             if (str)
                 return str.trim();

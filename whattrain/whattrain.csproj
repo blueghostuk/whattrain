@@ -112,6 +112,7 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\whattrain.dll" />
     <Content Include="Content\app\index.css" />
+    <Content Include="Content\app\svg\bhm.svg" />
     <Content Include="Content\app\svg\wvh.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -150,6 +151,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="_Layout.cshtml" />
+    <Content Include="wvh.cshtml" />
+    <Content Include="bhm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
