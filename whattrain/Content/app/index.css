@@ -9,3 +9,13 @@ div.platform{
 span.berth{
     text-align:center;
 }
+
+.jumbotron{
+    padding:0px !important;
+    margin:0px !important;
+}
+
+.berth{
+    font-size: 38px !important;
+    font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif !important;
+}
