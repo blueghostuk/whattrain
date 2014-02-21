@@ -113,6 +113,7 @@
     <Content Include="bin\whattrain.dll" />
     <Content Include="Content\app\index.css" />
     <Content Include="Content\app\svg\bhm.svg" />
+    <Content Include="Content\app\svg\eus.svg" />
     <Content Include="Content\app\svg\wvh.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -154,6 +155,7 @@
     <Content Include="_Layout.cshtml" />
     <Content Include="wvh.cshtml" />
     <Content Include="bhm.cshtml" />
+    <Content Include="eus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

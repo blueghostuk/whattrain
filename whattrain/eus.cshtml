@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/_Layout.cshtml";
+}
+<h2>
+    <a href="http://www.trainnotifier.co.uk/search/at/EUS" target="_blank" title="View full schedule">London Euston</a>&nbsp;
+    <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
+</h2>
+<div class="row" style="overflow:auto;">
+    @Html.Raw(File.ReadAllText(Server.MapPath("~/Content/app/svg/eus.svg")))
+</div>
+<div class="row">
+    <div class="alert alert-info"><a href="http://beta.opentraintimes.com/maps/signalling/WY/1" target="_blank">Advanced Map</a> from <a href="http://beta.opentraintimes.com" target="_blank">opentraintimes.com</a> (external site)</div>
+    <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
+    <div class="alert alert-info">More stations to be added in due time</div>
+</div>
+@section js{
+    <script type="text/javascript">
+        TrainNotifier.Common.stationCode = 'EUS';
+    </script>
+}

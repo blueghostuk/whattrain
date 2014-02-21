@@ -5,6 +5,9 @@
     Select Station:
     <select id="stationSelect">
         <option>Select Station</option>
+        <optgroup label="London">
+            <option value="EUS">Euston</option>
+        </optgroup>
         <optgroup label="West Midlands">
             <option value="BHM">Birmingham New Street</option>
             <option value="WVH">Wolverhampton</option>
@@ -12,13 +15,13 @@
     </select>
 </p>
 @section js{
-<script type="text/javascript">
-    $(function () {
-        $("#stationSelect").change(function () {
-            if ($(this).val().length > 0) {
-                document.location.href = "/" + $(this).val();
-            }
+    <script type="text/javascript">
+        $(function () {
+            $("#stationSelect").change(function () {
+                if ($(this).val().length > 0) {
+                    document.location.href = "/" + $(this).val();
+                }
+            });
         });
-    });
-</script>
-    }
+    </script>
+}
