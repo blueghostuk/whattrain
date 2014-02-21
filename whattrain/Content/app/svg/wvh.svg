@@ -65,11 +65,7 @@
        x="491.91406"
        y="504.44528"
        id="text2995"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan2997"
-         x="491.91406"
-         y="504.44528">P1</tspan></text>
+       sodipodi:linespacing="125%">P1</text>
     <rect
        style="fill:#b3b3b3;stroke:#000000;stroke-width:0.70018548;stroke-opacity:1"
        id="rect2999"
@@ -83,11 +79,7 @@
        x="58.571407"
        y="504.44528"
        id="text3001"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3003"
-         x="58.571407"
-         y="504.44528">P5</tspan></text>
+       sodipodi:linespacing="125%">P5</text>
     <rect
        style="fill:#000000;stroke:#000000;stroke-width:0.53649247;stroke-opacity:1"
        id="rect3779"
@@ -115,11 +107,7 @@
        x="911.49982"
        y="503.44528"
        id="text3001-0"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3003-9"
-         x="911.49982"
-         y="503.44528">P6</tspan></text>
+       sodipodi:linespacing="125%">P6</text>
     <rect
        style="fill:#000000;stroke:#000000;stroke-width:0.53649247;stroke-opacity:1"
        id="rect3779-4"
@@ -245,95 +233,67 @@
        x="491.91403"
        y="1012.3622"
        id="text2995-5-1-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan2997-1-1-5"
-         x="491.91403"
-         y="1012.3622">P4</tspan></text>
+       sodipodi:linespacing="125%">P4</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="887.14282"
        y="433.79074"
        id="text3064"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066"
          class="berth"
          data-berth="WO-0076"
          data-platform="6"
-         x="887.14282"
-         y="433.79074"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="463.91406"
        y="572.20734"
        id="text3064-1"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066-7"
          class="berth"
          data-berth="WO-0082"
          data-platform="1"
-         x="463.91406"
-         y="572.20734"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="463.91406"
        y="643.88"
        id="text3064-1-4"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066-7-0"
          class="berth"
          data-berth="WO-0085"
          data-berth-add="WO-0099"
          data-platform="2"
-         x="463.91406"
-         y="643.88"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="463.91406"
        y="852.45148"
        id="text3064-1-9"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066-7-4"
          class="berth"
          data-berth="WO-0097"
          data-platform="3"
-         x="463.91406"
-         y="852.45148"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="463.91406"
        y="929.5943"
        id="text3064-1-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066-7-8"
          class="berth"
          data-berth="WO-0105"
          data-platform="4"
-         x="463.91406"
-         y="929.5943"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;"
        x="33.635708"
        y="434.98526"
        id="text3064-2"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3066-4"
          class="berth"
          data-berth="WO-0098"
          data-platform="5"
-         x="33.635708"
-         y="434.98526"></tspan></text>
+       sodipodi:linespacing="125%">1T56</text>
   </g>
 </svg>
