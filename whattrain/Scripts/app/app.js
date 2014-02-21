@@ -47,26 +47,16 @@ function loadBerths() {
                             $(self).data("uid", "");
                             $(self).data("date", "");
                         }
-
-                        // this works on web,
-                        // it works on mobile safari but the UI is not refreshed
+                    }).always(function () {
                         $(self).text(berthData.m_Item2);
                     });
                 } else {
-                    // this works on web,
-                    // it works on mobile safari but the UI is not refreshed
                     $(self).text("");
                 }
             }).fail(function () {
-                // this works on web,
-                // it works on mobile safari but the UI is not refreshed
                 $(self).text("");
             });
         }
     });
-}
-
-function isMobileSafari() {
-    return navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/);
 }
 //# sourceMappingURL=app.js.map
