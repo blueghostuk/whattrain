@@ -22,9 +22,9 @@ $(function () {
         $(".loading").hide();
     });
 
-    if (isMobileSafari()) {
-        $("#mobile-ios-warning").show();
-    }
+    $(".berth").each(function () {
+        $(this).text("");
+    });
 
     reloadBerths();
 });
@@ -50,17 +50,17 @@ function loadBerths() {
                         }
                         // this works on web,
                         // it works on mobile safari but the UI is not refreshed
-                        $(self).html(berthData.m_Item2);
+                        $(self).text(berthData.m_Item2);
                     });
                 } else {
                     // this works on web,
                     // it works on mobile safari but the UI is not refreshed
-                    $(self).html("");
+                    $(self).text("");
                 }
             }).fail(function () {
                     // this works on web,
                     // it works on mobile safari but the UI is not refreshed
-                    $(self).html("");
+                    $(self).text("");
                 });
         }
     });
