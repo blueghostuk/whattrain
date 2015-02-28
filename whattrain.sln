@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "whattrain", "whattrain\whattrain.csproj", "{A28D3A67-4B09-4248-BB99-9A6CBD15182A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "whattrain", "whattrain.csproj", "{A28D3A67-4B09-4248-BB99-9A6CBD15182A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C6F0903-10E2-41E2-B451-BF8ABF74CBA9}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,6 +16,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		_config.yml = _config.yml
+		CNAME = CNAME
+		Gemfile = Gemfile
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
