@@ -1,18 +1,21 @@
 ---
 layout: default
 title: whattrain.co.uk - Birmingham New Street
+menu: <li><a href="/">Home</a></li><li class="active"><a>Birmingham New Street</a></li>
 js:
     - src: app/bhm.js
 ---
-<div class="row">
-    <h2>
-        <a href="http://www.trainnotifier.co.uk/search/at/BHM" target="_blank" title="View full schedule">Birmingham New Street</a>&nbsp;
-        <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
-    </h2>
-</div>
-<div class="row">
-    <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
-</div>
-<div class="row" style="overflow:auto;">
-    {% include bhm.svg %}
+<div class="jumbotron">
+    <div class="row">
+        <h2>
+            <a href="http://www.trainnotifier.co.uk/search/at/BHM" target="_blank" title="View full schedule">Birmingham New Street</a>&nbsp;
+            <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
+        </h2>
+    </div>
+    <div class="row">
+        <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
+    </div>
+    <div class="row" style="overflow:auto;">
+        {% include bhm.svg %}
+    </div>
 </div>

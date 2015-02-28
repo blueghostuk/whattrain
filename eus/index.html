@@ -1,21 +1,24 @@
 ---
 layout: default
 title: whattrain.co.uk - Euston
+menu: <li><a href="/">Home</a></li><li class="active"><a>London Euston</a></li>
 js:
     - src: app/eu.js
 ---
-<div class="row">
-    <h2>
-        <a href="http://www.trainnotifier.co.uk/search/at/EUS" target="_blank" title="View full schedule">London Euston</a>&nbsp;
-        <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
-    </h2>
-</div>
-<div class="row">
-    <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
-</div>
-<div class="row" style="overflow:auto;">
-    {% include eus.svg %}
-</div>
-<div class="row">
-    <div class="alert alert-info"><a href="http://www.opentraintimes.com/maps/signalling/lec1" target="_blank">Advanced Map</a> from <a href="http://www.opentraintimes.com" target="_blank">opentraintimes.com</a> (external site)</div>
+<div class="jumbotron">
+    <div class="row">
+        <h2>
+            <a href="http://www.trainnotifier.co.uk/search/at/EUS" target="_blank" title="View full schedule">London Euston</a>&nbsp;
+            <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
+        </h2>
+    </div>
+    <div class="row">
+        <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
+    </div>
+    <div class="row" style="overflow:auto;">
+        {% include eus.svg %}
+    </div>
+    <div class="row">
+        <div class="alert alert-info"><a href="http://www.opentraintimes.com/maps/signalling/lec1" target="_blank">Advanced Map</a> from <a href="http://www.opentraintimes.com" target="_blank">opentraintimes.com</a> (external site)</div>
+    </div>
 </div>
