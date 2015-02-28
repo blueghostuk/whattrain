@@ -38,25 +38,17 @@ function loadBerths() {
         var self = this;
         var berth: string = $(self).data("berth");
         if (berth && berth.length > 0) {
-            webApi.getBerthContents($(self).data("berth")).done(function (berthData: IBerthContents) {
-                if (berthData) {
-                    webApi.getTrainMovementLink(berthData.m_Item2, TrainNotifier.Common.stationCode, $(self).data("platform")).done(function (link: ITrainMovementLink) {
-                        if (link) {
-                            $(self).data("uid", link.TrainUid);
-                            $(self).data("date", link.OriginDepartTimestamp);
-                        } else {
-                            $(self).data("uid", "");
-                            $(self).data("date", "");
-                        }
-                    }).always(function () {
-                            $(self).text(berthData.m_Item2);
-                        });
-                } else {
-                    $(self).text("");
+            webApi.getBerthContents($(self).data("berth")).done(function (berthData: BerthContents) {
+                if (berthData && berthData.m_Item3) {
+                    $(self).data("uid", berthData.m_Item3.TrainUid);
+                    $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
                 }
+                $(self).text(berthData.m_Item2);
             }).fail(function () {
-                    $(self).text("");
-                });
+                $(self).text("");
+            });
+        } else {
+            $(self).text("");
         }
     });
 }
