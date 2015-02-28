@@ -39,12 +39,17 @@ function loadBerths() {
         var berth: string = $(self).data("berth");
         if (berth && berth.length > 0) {
             webApi.getBerthContents($(self).data("berth")).done(function (berthData: BerthContents) {
-                if (berthData && berthData.m_Item3) {
-                    $(self).data("uid", berthData.m_Item3.TrainUid);
-                    $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
-                }
-                $(self).text(berthData.m_Item2);
-            }).fail(function () {
+                if (berthData) {
+                    if (berthData.m_Item3) {
+                        $(self).data("uid", berthData.m_Item3.TrainUid);
+                        $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
+                    }
+                    else {
+                        $(self).text(berthData.m_Item2);
+                    }else{
+                        $(self).text("");
+                    }
+                }).fail(function () {
                 $(self).text("");
             });
         } else {
