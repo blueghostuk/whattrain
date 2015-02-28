@@ -6,7 +6,7 @@ $(function () {
         var date = $(this).data("date");
         if (uid && uid.length > 0 && date && date.length > 0) {
             var dateTs = moment(date);
-            window.open("http://www.trainnotifier.co.uk/train/#!" + uid + "/" + dateTs.format(TrainNotifier.DateTimeFormats.dateUrlFormat));
+            window.open("http://www.trainnotifier.co.uk/train/#!" + uid + "/" + dateTs.format(TrainNotifier.DateTimeFormats.dateQueryFormat));
         }
     });
     $(document).ajaxStart(function () {
