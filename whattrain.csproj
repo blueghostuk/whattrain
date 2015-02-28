@@ -100,18 +100,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bhm\bhm.html" />
+    <Content Include="bhm\index.html" />
     <Content Include="Content\app\index.css" />
-    <Content Include="bhm\bhm.svg" />
-    <Content Include="eus\eus.svg" />
-    <Content Include="wvh\wvh.svg" />
+    <Content Include="_includes\bhm.svg" />
+    <Content Include="_includes\eus.svg" />
+    <Content Include="_includes\wvh.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="eus\eus.html" />
+    <Content Include="eus\index.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\app\app.js">
@@ -174,8 +174,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
+    <TypeScriptCompile Include="Scripts\app\bhm.ts" />
+    <TypeScriptCompile Include="Scripts\app\eus.ts" />
     <TypeScriptCompile Include="Scripts\app\global.ts" />
+    <TypeScriptCompile Include="Scripts\app\index.ts" />
     <TypeScriptCompile Include="Scripts\app\webApi.ts" />
+    <TypeScriptCompile Include="Scripts\app\wvh.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
