@@ -46,10 +46,11 @@ function loadBerths() {
                     }
                     else {
                         $(self).text(berthData.m_Item2);
-                    }else{
-                        $(self).text("");
                     }
-                }).fail(function () {
+                } else {
+                    $(self).text("");
+                }
+            }).fail(function () {
                 $(self).text("");
             });
         } else {

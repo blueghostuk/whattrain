@@ -29,11 +29,18 @@ function loadBerths() {
         var berth = $(self).data("berth");
         if (berth && berth.length > 0) {
             webApi.getBerthContents($(self).data("berth")).done(function (berthData) {
-                if (berthData && berthData.m_Item3) {
-                    $(self).data("uid", berthData.m_Item3.TrainUid);
-                    $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
+                if (berthData) {
+                    if (berthData.m_Item3) {
+                        $(self).data("uid", berthData.m_Item3.TrainUid);
+                        $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
+                    }
+                    else {
+                        $(self).text(berthData.m_Item2);
+                    }
                 }
-                $(self).text(berthData.m_Item2);
+                else {
+                    $(self).text("");
+                }
             }).fail(function () {
                 $(self).text("");
             });
