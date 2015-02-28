@@ -44,8 +44,10 @@ function loadBerths() {
                         $(self).data("uid", berthData.m_Item3.TrainUid);
                         $(self).data("date", berthData.m_Item3.OriginDepartTimestamp);
                     }
-                    else {
+                    if (berthData.m_Item2) {
                         $(self).text(berthData.m_Item2);
+                    } else {
+                        $(self).text("");
                     }
                 } else {
                     $(self).text("");
