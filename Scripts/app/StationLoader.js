@@ -4,7 +4,7 @@ var StationLoader = (function () {
     StationLoader.loadStation = function (station) {
         $.when(this.updateData(station)).done(function () {
             ko.applyBindings(station, $("table#station").get(0));
-            window.setInterval(_this.updateData, 5000, station);
+            window.setInterval(StationLoader.updateData, 5000, station);
         });
     };
     StationLoader.updateData = function (station) {
@@ -16,7 +16,7 @@ var StationLoader = (function () {
             for (var j = 0; j < platform.segments.length; j++) {
                 var segment = platform.segments[j];
                 if (segment.berth) {
-                    promises.push(this.getBerthContents(segment));
+                    promises.push(StationLoader.getBerthContents(segment));
                 }
             }
         }
@@ -31,6 +31,10 @@ var StationLoader = (function () {
                         if (berthData.m_Item3) {
                             obj.segment.train.reset();
                             segment.train.id(berthData.m_Item2);
+                            var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
+                            return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done(function (train) {
+                                obj.segment.train.operator(train.Movement.Schedule.AtocCode.Name);
+                            });
                         }
                         else if (berthData.m_Item2) {
                             obj.segment.train.reset();

@@ -34,9 +34,10 @@ class StationLoader {
                         if (berthData.m_Item3) {
                             obj.segment.train.reset();
                             segment.train.id(berthData.m_Item2);
+                            var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
                             return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done((train) => {
-                                segment.train.operator(train.Movement.Schedule.AtocCode.Name);
-                            });*/
+                                obj.segment.train.operator(train.Movement.Schedule.AtocCode.Name);
+                            });
                         } else if (berthData.m_Item2) {
                             obj.segment.train.reset();
                             obj.segment.train.id(berthData.m_Item2);
