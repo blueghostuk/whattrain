@@ -53,4 +53,3 @@ function loadBerths() {
         }
     });
 }
-//# sourceMappingURL=app.js.map

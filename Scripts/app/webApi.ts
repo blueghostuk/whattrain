@@ -9,7 +9,7 @@ interface IWebApi {
     getStations(): JQueryPromise<any>;
     getStationByLocation(lat: number, lon: number, limit?: number): JQueryPromise<any>;
 
-    getTrainMovementByUid(uid: string, date: string): JQueryPromise<any>;
+    getTrainMovementByUid(uid: string, date: string): JQueryPromise<ISingleTrainMovementResult>;
     getTrainMovementById(id: string): JQueryPromise<any>;
     getTrainMovementAssociations(uid: string, date: string): JQueryPromise<any>;
     getTrainMovementsByHeadcode(headcode: string, date: string): JQueryPromise<any>;
@@ -31,7 +31,7 @@ interface IWebApi {
     getPPMOperatorRegions(operatorCode: string): JQueryPromise<any>;
     getPPMData(operatorCode: string, name: string): JQueryPromise<any>;
 
-    getBerthContents(berth: string): JQueryPromise<any>;
+    getBerthContents(berth: string): JQueryPromise<BerthContents>;
 }
 
 interface IEstimate {

@@ -102,8 +102,10 @@
   <ItemGroup>
     <Content Include="bhm\index.html" />
     <Content Include="Content\app\index.css" />
+    <Content Include="wvh\table.html" />
     <Content Include="_includes\bhm.svg" />
     <Content Include="_includes\eus.svg" />
+    <Content Include="_includes\table.html" />
     <Content Include="_includes\wvh.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -114,15 +116,6 @@
     <Content Include="eus\index.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Scripts\app\app.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\app\webApi.js.map">
-      <DependentUpon>webApi.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\app\app.js.map">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -135,7 +128,6 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="index.html" />
-    <None Include="Properties\PublishProfiles\azure.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -159,33 +151,27 @@
     <Content Include="Scripts\jquery-2.1.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\app\global.js.map">
-      <DependentUpon>global.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\app\global.js">
-      <DependentUpon>global.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\app\webApi.js">
-      <DependentUpon>webApi.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\bhm.ts" />
     <TypeScriptCompile Include="Scripts\app\eus.ts" />
     <TypeScriptCompile Include="Scripts\app\global.ts" />
     <TypeScriptCompile Include="Scripts\app\index.ts" />
+    <TypeScriptCompile Include="Scripts\app\Platform.ts" />
+    <TypeScriptCompile Include="Scripts\app\PlatformSegment.ts" />
+    <TypeScriptCompile Include="Scripts\app\Station.ts" />
+    <TypeScriptCompile Include="Scripts\app\StationLoader.ts" />
+    <TypeScriptCompile Include="Scripts\app\Train.ts" />
     <TypeScriptCompile Include="Scripts\app\webApi.ts" />
+    <TypeScriptCompile Include="Scripts\app\wvh-table.ts" />
     <TypeScriptCompile Include="Scripts\app\wvh.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\moment\moment.d.ts" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -200,6 +186,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -207,7 +197,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>2486</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

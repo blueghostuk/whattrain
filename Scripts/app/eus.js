@@ -1,0 +1,1 @@
+TrainNotifier.Common.stationCode = 'EUS';

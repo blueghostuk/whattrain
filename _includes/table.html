@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover table-condensed" id="station">
+    <thead>
+        <tr>
+            <th>Platform</th>
+            <th>ID</th>
+            <th>Operator</th>
+            <th>Arrival</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Departure</th>
+            <th>Other sites</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-bind="foreach: segments">
+            <td data-bind="text: name"></td>
+            <td data-bind="text: train.id"></td>
+            <td data-bind="text: train.operator"></td>
+            <td data-bind="text: train.arrival"></td>
+            <td data-bind="text: train.from"></td>
+            <td data-bind="text: train.to"></td>
+            <td data-bind="text: train.departure"></td>
+            <td>
+                <!--<ul class="inline" data-bind="foreach: otherSite">
+                <li>
+                    <span data-bind="text: name"></span>
+                </li>
+            </ul>-->
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,6 +1,3 @@
-/// <reference path="global.ts" />
-/// <reference path="../typings/jquery/jquery.d.ts" />
-/// <reference path="../typings/moment/moment.d.ts" />
 var TrainNotifier;
 (function (TrainNotifier) {
     var WebApi = (function () {
@@ -593,4 +590,3 @@ var TrainNotifier;
     })();
     TrainNotifier.CategoryTypeLookup = CategoryTypeLookup;
 })(TrainNotifier || (TrainNotifier = {}));
-//# sourceMappingURL=webApi.js.map

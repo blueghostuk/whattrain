@@ -1,4 +1,4 @@
-﻿var TrainNotifier;
+var TrainNotifier;
 (function (TrainNotifier) {
     var Common = (function () {
         function Common() {
@@ -8,7 +8,6 @@
                 return str.trim();
             return null;
         };
-
         Common.coalesce = function (str) {
             for (var i = 0; i < str.length; i++) {
                 var trimmed = Common.trimNullableString(str[i]);
@@ -31,26 +30,22 @@
             }
             return null;
         };
-
         DateTimeFormats.formatDateTimeString = function (dateTime, format) {
-            if (typeof format === "undefined") { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
+            if (format === void 0) { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
             if (dateTime) {
                 var timeMoment = moment(dateTime);
                 return DateTimeFormats.formatTimeMoment(timeMoment, format);
             }
             return null;
         };
-
         DateTimeFormats.formatTimeDuration = function (duration) {
             if (duration) {
                 return DateTimeFormats.padString(duration.hours().toString()) + ":" + DateTimeFormats.padString(duration.minutes().toString());
             }
-
             return null;
         };
-
         DateTimeFormats.formatTimeMoment = function (timeMoment, format) {
-            if (typeof format === "undefined") { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
+            if (format === void 0) { format = TrainNotifier.DateTimeFormats.shortTimeFormat; }
             if (timeMoment && timeMoment.isValid()) {
                 var ts = timeMoment.format(format);
                 if (timeMoment.seconds() === 30) {
@@ -60,7 +55,6 @@
             }
             return null;
         };
-
         DateTimeFormats.padString = function (input) {
             if (input.length == 0)
                 return "00";
@@ -83,7 +77,6 @@
         return DateTimeFormats;
     })();
     TrainNotifier.DateTimeFormats = DateTimeFormats;
-
     var CommonStrings = (function () {
         function CommonStrings() {
         }
@@ -92,4 +85,3 @@
     })();
     TrainNotifier.CommonStrings = CommonStrings;
 })(TrainNotifier || (TrainNotifier = {}));
-//# sourceMappingURL=global.js.map
