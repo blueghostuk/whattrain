@@ -2,7 +2,6 @@ var StationLoader = (function () {
     function StationLoader() {
     }
     StationLoader.loadStation = function (station) {
-        var _this = this;
         $.when(this.updateData(station)).done(function () {
             ko.applyBindings(station, $("table#station").get(0));
             window.setInterval(_this.updateData, 5000, station);

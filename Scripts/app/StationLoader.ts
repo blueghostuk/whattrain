@@ -4,7 +4,7 @@ class StationLoader {
     public static loadStation(station: Station) {
         $.when(this.updateData(station)).done(() => {
             ko.applyBindings(station, $("table#station").get(0));
-            window.setInterval(this.updateData, 5000, station);
+            window.setInterval(StationLoader.updateData, 5000, station);
         });
     }
 
@@ -17,7 +17,7 @@ class StationLoader {
             for (var j = 0; j < platform.segments.length; j++) {
                 var segment = platform.segments[j];
                 if (segment.berth) {
-                    promises.push(this.getBerthContents(segment));
+                    promises.push(StationLoader.getBerthContents(segment));
                 }
             }
         }
@@ -34,7 +34,6 @@ class StationLoader {
                         if (berthData.m_Item3) {
                             obj.segment.train.reset();
                             segment.train.id(berthData.m_Item2);
-                            /*var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
                             return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done((train) => {
                                 segment.train.operator(train.Movement.Schedule.AtocCode.Name);
                             });*/
