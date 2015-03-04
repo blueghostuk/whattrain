@@ -22,7 +22,8 @@ var StationLoader = (function () {
                             if (berthData.m_Item3) {
                                 segment.train.reset();
                                 segment.train.id(berthData.m_Item2);
-                                return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, berthData.m_Item3.OriginDepartTimestamp).done(function (train) {
+                                var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
+                                return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done(function (train) {
                                     segment.train.operator(train.Movement.Schedule.AtocCode.Name);
                                 });
                             }
