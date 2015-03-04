@@ -11,8 +11,8 @@
             <th>Other sites</th>
         </tr>
     </thead>
-    <tbody>
-        <tr data-bind="foreach: segments">
+    <tbody data-bind="foreach: segments">
+        <tr>
             <td data-bind="text: name"></td>
             <td data-bind="text: train.id"></td>
             <td data-bind="text: train.operator"></td>
@@ -22,10 +22,10 @@
             <td data-bind="text: train.departure"></td>
             <td>
                 <!--<ul class="inline" data-bind="foreach: otherSite">
-                <li>
-                    <span data-bind="text: name"></span>
-                </li>
-            </ul>-->
+                    <li>
+                        <span data-bind="text: name"></span>
+                    </li>
+                </ul>-->
             </td>
         </tr>
     </tbody>
