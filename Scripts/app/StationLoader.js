@@ -20,7 +20,7 @@ var StationLoader = (function () {
                 }
             }
         }
-        return $.when(promises).always(function () { return $(".fa.fa-refresh").addClass("hide"); });
+        return $.when.apply($, promises).done(function () { return $(".fa.fa-refresh").addClass("hide"); });
     };
     StationLoader.getBerthContents = function (segment) {
         var obj = {

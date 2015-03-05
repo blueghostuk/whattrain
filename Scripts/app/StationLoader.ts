@@ -22,7 +22,7 @@ class StationLoader {
             }
         }
 
-        return $.when(promises).always(() => $(".fa.fa-refresh").addClass("hide"));
+        return $.when.apply($, promises).done(() => $(".fa.fa-refresh").addClass("hide"));
     }
 
     private static getBerthContents(segment: PlatformSegment) {
