@@ -9,7 +9,8 @@
     TrainNotifier.Common.serverSettings = {
         apiUrl: "{{ site.api }}",
         trainLink: "{{ site.trainurl }}",
-        apiName: "{{ site.apiname }}"
+        apiName: "{{ site.apiname }}",
+        useLocalStorage: true
     };
 </script>
 {% if page.js %}{% for item in page.js %}
