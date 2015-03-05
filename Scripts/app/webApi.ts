@@ -136,6 +136,9 @@ module TrainNotifier {
                 return results[0];
             return null;
         }
+        public static tiplocDisplayName(tiploc: StationTiploc) {
+            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName : tiploc.Description : "Unknown";
+        }
     }
 }
 

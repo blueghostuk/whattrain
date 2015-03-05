@@ -44,10 +44,10 @@ class StationLoader {
                                 var scheduleLast = train.Movement.Schedule.Stops[train.Movement.Schedule.Stops.length - 1];
 
                                 var origin = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleFirst.TiplocStanoxCode, train.Tiplocs);
-                                obj.segment.train.from(origin.StationName);
+                                obj.segment.train.from(TrainNotifier.StationTiplocHelper.tiplocDisplayName(origin));
 
                                 var dest = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleLast.TiplocStanoxCode, train.Tiplocs);
-                                obj.segment.train.to(dest.StationName);
+                                obj.segment.train.to(TrainNotifier.StationTiplocHelper.tiplocDisplayName(dest));
                             });
                         } else if (berthData.m_Item2) {
                             obj.segment.train.reset(berthData.m_Item2);

@@ -85,6 +85,9 @@ var TrainNotifier;
                 return results[0];
             return null;
         };
+        StationTiplocHelper.tiplocDisplayName = function (tiploc) {
+            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName : tiploc.Description : "Unknown";
+        };
         return StationTiplocHelper;
     })();
     TrainNotifier.StationTiplocHelper = StationTiplocHelper;
