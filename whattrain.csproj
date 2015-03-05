@@ -87,9 +87,8 @@
   <ItemGroup>
     <Content Include="bhm\index.html" />
     <Content Include="Content\app\index.css" />
-    <Content Include="eus\table.html" />
+    <Content Include="eus\index.html" />
     <Content Include="wvh\index.html" />
-    <Content Include="_includes\eus.svg" />
     <Content Include="_includes\table.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -97,7 +96,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="eus\index.html" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -137,7 +135,6 @@
     <TypeScriptCompile Include="Scripts\app\app.ts" />
     <TypeScriptCompile Include="Scripts\app\bhm-table.ts" />
     <TypeScriptCompile Include="Scripts\app\eus-table.ts" />
-    <TypeScriptCompile Include="Scripts\app\eus.ts" />
     <TypeScriptCompile Include="Scripts\app\global.ts" />
     <TypeScriptCompile Include="Scripts\app\index.ts" />
     <TypeScriptCompile Include="Scripts\app\Platform.ts" />

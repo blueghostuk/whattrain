@@ -1,22 +1,23 @@
 ---
 layout: default
-title: whattrain.co.uk - Euston
+title: whattrain.co.uk - London Euston
 menu: <li><a href="/">Home</a></li><li class="active"><a>London Euston</a></li>
-js:
-    - src: app/eu.js
+js:             
+    - src: app/Train.js 
+    - src: app/PlatformSegment.js 
+    - src: app/Platform.js   
+    - src: app/Station.js    
+    - src: app/StationLoader.js
+    - src: app/eus-table.js 
 ---
 <div class="row">
     <h4>
-        <a href="http://www.trainnotifier.co.uk/search/at/EUS" target="_blank" title="View full schedule">London Euston</a>&nbsp;
-        <span class="glyphicon glyphicon-refresh loading" style="display:none; font-size: large;"></span>
+        <a href="http://www.trainnotifier.co.uk/search-results/#!at/EUS/" target="_blank" title="View full schedule">London Euston</a>&nbsp;
+        <span class="fa fa-refresh fa-spin"></span>
     </h4>
     <hr />
     <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
 </div>
 <div class="row" style="overflow:auto;">
-    {% include eus.svg %}
-</div>
-<div class="row">
-    <hr />
-    <div class="alert alert-info"><a href="http://www.opentraintimes.com/maps/signalling/lec1" target="_blank">Advanced Map</a> from <a href="http://www.opentraintimes.com" target="_blank">opentraintimes.com</a> (external site)</div>
+    {% include table.html %}
 </div>
