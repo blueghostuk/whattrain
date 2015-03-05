@@ -2,7 +2,7 @@ var StationLoader = (function () {
     function StationLoader() {
     }
     StationLoader.loadStation = function (station) {
-        $.when(this.updateData(station)).done(function () {
+        $.when(this.updateData(station)).always(function () {
             ko.applyBindings(station, $("table#station").get(0));
             window.setInterval(StationLoader.updateData, 5000, station);
         });
@@ -20,7 +20,7 @@ var StationLoader = (function () {
                 }
             }
         }
-        return $.when.apply($, promises).done(function () { return $(".fa.fa-refresh").addClass("hide"); });
+        return $.when.apply($, promises).always(function () { return $(".fa.fa-refresh").addClass("hide"); });
     };
     StationLoader.getBerthContents = function (crsCode, segment) {
         var obj = {

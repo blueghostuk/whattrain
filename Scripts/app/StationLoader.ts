@@ -2,7 +2,7 @@
 class StationLoader {
 
     public static loadStation(station: Station) {
-        $.when(this.updateData(station)).done(() => {
+        $.when(this.updateData(station)).always(() => {
             ko.applyBindings(station, $("table#station").get(0));
             window.setInterval(StationLoader.updateData, 5000, station);
         });
@@ -22,7 +22,7 @@ class StationLoader {
             }
         }
 
-        return $.when.apply($, promises).done(() => $(".fa.fa-refresh").addClass("hide"));
+        return $.when.apply($, promises).always(() => $(".fa.fa-refresh").addClass("hide"));
     }
 
     private static getBerthContents(crsCode: string, segment: PlatformSegment) {
