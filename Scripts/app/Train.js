@@ -7,8 +7,9 @@ var Train = (function () {
         this.to = ko.observable(null);
         this.departure = ko.observable(null);
     }
-    Train.prototype.reset = function () {
-        this.id(null);
+    Train.prototype.reset = function (id) {
+        if (id === void 0) { id = null; }
+        this.id(id);
         this.operator(null);
         this.arrival(null);
         this.from(null);

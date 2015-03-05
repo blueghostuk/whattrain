@@ -7,8 +7,8 @@ class Train {
     public to = ko.observable<string>(null);
     public departure = ko.observable<string>(null);
 
-    public reset() {
-        this.id(null);
+    public reset(id: string = null) {
+        this.id(id);
         this.operator(null);
         this.arrival(null);
         this.from(null);
