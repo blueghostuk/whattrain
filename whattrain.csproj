@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bhm\index.html" />
+    <Content Include="bhm\table.html" />
     <Content Include="Content\app\index.css" />
     <Content Include="wvh\table.html" />
     <Content Include="_includes\bhm.svg" />
@@ -152,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\app.ts" />
+    <TypeScriptCompile Include="Scripts\app\bhm-table.ts" />
     <TypeScriptCompile Include="Scripts\app\bhm.ts" />
     <TypeScriptCompile Include="Scripts\app\eus.ts" />
     <TypeScriptCompile Include="Scripts\app\global.ts" />
