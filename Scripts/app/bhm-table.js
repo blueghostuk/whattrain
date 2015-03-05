@@ -4,10 +4,10 @@ $(function () {
     platform1.addSegment("A", "BN-0181");
     platform1.addSegment("A", "BN-0209");
     platform1.addSegment("M", "BN-0205");
-    platform1.addSegment("B", "BN-0149");
     platform1.addSegment("B", "BN-0240");
     var platform2 = new Platform("2");
     platform2.addSegment("A", "BN-0179");
+    platform2.addSegment("M", "BN-0149");
     platform2.addSegment("B", "BN-0233");
     var platform3 = new Platform("3");
     platform3.addSegment("A", "BN-0178");
