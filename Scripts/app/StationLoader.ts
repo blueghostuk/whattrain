@@ -32,15 +32,25 @@ class StationLoader {
                 return webApi.getBerthContents(segment.berth).then((berthData) => {
                     if (berthData) {
                         if (berthData.m_Item3) {
-                            obj.segment.train.reset();
                             segment.train.id(berthData.m_Item2);
                             var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
                             return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done((train) => {
                                 obj.segment.train.operator(train.Movement.Schedule.AtocCode.Name);
+                                var mostRecentStop = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
+                                if (mostRecentStop != null) {
+                                    //obj.segment.train
+                                }
+                                var scheduleFirst = train.Movement.Schedule.Stops[0];
+                                var scheduleLast = train.Movement.Schedule.Stops[train.Movement.Schedule.Stops.length - 1];
+
+                                var origin = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleFirst.TiplocStanoxCode, train.Tiplocs);
+                                obj.segment.train.from(origin.StationName);
+
+                                var dest = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleLast.TiplocStanoxCode, train.Tiplocs);
+                                obj.segment.train.from(dest.StationName);
                             });
                         } else if (berthData.m_Item2) {
-                            obj.segment.train.reset();
-                            obj.segment.train.id(berthData.m_Item2);
+                            obj.segment.train.reset(berthData.m_Item2);
                         } else {
                             obj.segment.train.reset();
                         }
