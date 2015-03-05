@@ -1,14 +1,14 @@
-﻿interface IServerSettings {
+﻿interface ServerSettings {
     apiUrl: string;
-    wsUrl: string;
     apiName: string;
+    useLocalStorage?: boolean;
 }
 
 module TrainNotifier {
 
     export class Common {
 
-        static serverSettings: IServerSettings;
+        static serverSettings: ServerSettings;
         static webApi: IWebApi;
 
         static stationCode: string;
