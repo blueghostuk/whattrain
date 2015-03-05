@@ -8,7 +8,7 @@
             <th>From</th>
             <th>To</th>
             <th>Departure</th>
-            <th>Other sites</th>
+            <!--<th>Other sites</th>-->
         </tr>
     </thead>
     <tbody data-bind="foreach: segments">
@@ -20,13 +20,13 @@
             <td data-bind="text: train.from"></td>
             <td data-bind="text: train.to"></td>
             <td data-bind="text: train.departure"></td>
-            <td>
-                <!--<ul class="inline" data-bind="foreach: otherSite">
+            <!--<td>
+                <ul class="inline" data-bind="foreach: otherSite">
                     <li>
                         <span data-bind="text: name"></span>
                     </li>
-                </ul>-->
-            </td>
+                </ul>
+            </td>-->
         </tr>
     </tbody>
 </table>
