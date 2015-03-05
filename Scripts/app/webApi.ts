@@ -115,33 +115,13 @@ interface BerthTrainDetails {
 
 module TrainNotifier {
 
-    export enum LiveTrainStopSource {
-        Trust = 0,
-        TD = 1
-    }
-
     export enum EventType {
         Departure = 1,
         Arrival = 2
     }
 
-    export enum TrainState {
-        Activated = 1,
-        Cancelled = 2,
-        ActivatedAndCancelled = 3,
-        Terminated = 4,
-        ActivatedAndTerminated = 5
-    }
-
     export class CancellationCodes {
         public static EnRoute = "EN ROUTE";
-    }
-
-    export enum STPIndicatorValue {
-        Cancellation = 1,
-        STP = 2,
-        Overlay = 3,
-        Permanent = 4
     }
 
     export class StationTiplocHelper {
@@ -167,7 +147,6 @@ interface RunningTrainActualStop {
     Platform?: string;
     ScheduleStopNumber: number;
     TiplocStanoxCode: string;
-    Source: TrainNotifier.LiveTrainStopSource;
 }
 
 interface RunningTrainActual {
@@ -175,7 +154,6 @@ interface RunningTrainActual {
     TrainId: string;
     HeadCode: string;
     TrainServiceCode: string;
-    State: TrainNotifier.TrainState;
     ScheduleOriginStanoxCode: string;
     OriginDepartTimestamp: string;
     Stops: RunningTrainActualStop[];
@@ -184,29 +162,6 @@ interface RunningTrainActual {
 interface AtocCode {
     Code: string;
     Name: string;
-}
-
-interface Schedule {
-    Monday: boolean;
-    Tuesday: boolean;
-    Wednesday: boolean;
-    Thursday: boolean;
-    Friday: boolean;
-    Saturday: boolean;
-    Sunday: boolean;
-    BankHoliday: boolean;
-}
-
-interface ScheduleStatus {
-    StatusId: number;
-    Code: string;
-    Name: string;
-}
-
-interface STPIndicator {
-    STPIndicatorId: TrainNotifier.STPIndicatorValue;
-    Code: string;
-    Description: string;
 }
 
 interface RunningScheduleTrainStop {
@@ -255,10 +210,8 @@ interface RunningScheduleTrain {
     EndDate: string;
     AtocCode: AtocCode;
     ScheduleStatusId: number;
-    STPIndicatorId: TrainNotifier.STPIndicatorValue;
     Speed?: number;
     Stops: RunningScheduleTrainStop[];
-    Schedule: Schedule;
 }
 
 interface TrainMovementResult {

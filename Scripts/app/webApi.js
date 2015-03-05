@@ -59,24 +59,11 @@ var TrainNotifier;
 })(TrainNotifier || (TrainNotifier = {}));
 var TrainNotifier;
 (function (TrainNotifier) {
-    (function (LiveTrainStopSource) {
-        LiveTrainStopSource[LiveTrainStopSource["Trust"] = 0] = "Trust";
-        LiveTrainStopSource[LiveTrainStopSource["TD"] = 1] = "TD";
-    })(TrainNotifier.LiveTrainStopSource || (TrainNotifier.LiveTrainStopSource = {}));
-    var LiveTrainStopSource = TrainNotifier.LiveTrainStopSource;
     (function (EventType) {
         EventType[EventType["Departure"] = 1] = "Departure";
         EventType[EventType["Arrival"] = 2] = "Arrival";
     })(TrainNotifier.EventType || (TrainNotifier.EventType = {}));
     var EventType = TrainNotifier.EventType;
-    (function (TrainState) {
-        TrainState[TrainState["Activated"] = 1] = "Activated";
-        TrainState[TrainState["Cancelled"] = 2] = "Cancelled";
-        TrainState[TrainState["ActivatedAndCancelled"] = 3] = "ActivatedAndCancelled";
-        TrainState[TrainState["Terminated"] = 4] = "Terminated";
-        TrainState[TrainState["ActivatedAndTerminated"] = 5] = "ActivatedAndTerminated";
-    })(TrainNotifier.TrainState || (TrainNotifier.TrainState = {}));
-    var TrainState = TrainNotifier.TrainState;
     var CancellationCodes = (function () {
         function CancellationCodes() {
         }
@@ -84,13 +71,6 @@ var TrainNotifier;
         return CancellationCodes;
     })();
     TrainNotifier.CancellationCodes = CancellationCodes;
-    (function (STPIndicatorValue) {
-        STPIndicatorValue[STPIndicatorValue["Cancellation"] = 1] = "Cancellation";
-        STPIndicatorValue[STPIndicatorValue["STP"] = 2] = "STP";
-        STPIndicatorValue[STPIndicatorValue["Overlay"] = 3] = "Overlay";
-        STPIndicatorValue[STPIndicatorValue["Permanent"] = 4] = "Permanent";
-    })(TrainNotifier.STPIndicatorValue || (TrainNotifier.STPIndicatorValue = {}));
-    var STPIndicatorValue = TrainNotifier.STPIndicatorValue;
     var StationTiplocHelper = (function () {
         function StationTiplocHelper() {
         }
