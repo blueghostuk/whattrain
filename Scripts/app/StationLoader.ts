@@ -48,6 +48,9 @@ class StationLoader {
 
                                 var dest = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleLast.TiplocStanoxCode, train.Tiplocs);
                                 obj.segment.train.to(TrainNotifier.StationTiplocHelper.tiplocDisplayName(dest));
+
+                                var arrival = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
+                                obj.segment.train.arrival(moment(arrival.ActualTimestamp).format(TrainNotifier.DateTimeFormats.timeFormat));
                             });
                         } else if (berthData.m_Item2) {
                             obj.segment.train.reset(berthData.m_Item2);
