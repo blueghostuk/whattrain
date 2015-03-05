@@ -1,14 +1,14 @@
 ﻿
 class Train {
-    public id = ko.observable<string>(null);
-    public operator = ko.observable<string>(null);
-    public arrival = ko.observable<string>(null);
-    public from = ko.observable<string>(null);
-    public to = ko.observable<string>(null);
-    public departure = ko.observable<string>(null);
+    public id = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public operator = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public arrival = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public from = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public to = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public departure = ko.observable<string>(null).extend({ rateLimit: 500 });
 
-    public reset(id: string = null) {
-        this.id(id);
+    public reset() {
+        this.id(null);
         this.operator(null);
         this.arrival(null);
         this.from(null);

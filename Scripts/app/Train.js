@@ -1,15 +1,14 @@
 var Train = (function () {
     function Train() {
-        this.id = ko.observable(null);
-        this.operator = ko.observable(null);
-        this.arrival = ko.observable(null);
-        this.from = ko.observable(null);
-        this.to = ko.observable(null);
-        this.departure = ko.observable(null);
+        this.id = ko.observable(null).extend({ rateLimit: 500 });
+        this.operator = ko.observable(null).extend({ rateLimit: 500 });
+        this.arrival = ko.observable(null).extend({ rateLimit: 500 });
+        this.from = ko.observable(null).extend({ rateLimit: 500 });
+        this.to = ko.observable(null).extend({ rateLimit: 500 });
+        this.departure = ko.observable(null).extend({ rateLimit: 500 });
     }
-    Train.prototype.reset = function (id) {
-        if (id === void 0) { id = null; }
-        this.id(id);
+    Train.prototype.reset = function () {
+        this.id(null);
         this.operator(null);
         this.arrival(null);
         this.from(null);
