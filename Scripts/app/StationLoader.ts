@@ -32,15 +32,17 @@ class StationLoader {
             getData: () => {
                 return webApi.getBerthContents(segment.berth).then((berthData) => {
                     if (berthData) {
-                        if (berthData.m_Item3) {
+                        if (berthData.m_Item2)
                             segment.train.id(berthData.m_Item2);
+                        if (berthData.m_Item3) {
                             var ts = moment(berthData.m_Item3.OriginDepartTimestamp).format(TrainNotifier.DateTimeFormats.dateQueryFormat);
                             return webApi.getTrainMovementByUid(berthData.m_Item3.TrainUid, ts).done((train) => {
                                 if (train != null) {
                                     StationLoader.showTrainMovement(train, obj.segment);
                                 } else {
                                     obj.segment.train.reset();
-                                    obj.segment.train.id(berthData.m_Item2);
+                                    if (berthData.m_Item2)
+                                        obj.segment.train.id(berthData.m_Item2);
                                 }
                             });
                         } else if (berthData.m_Item2) {
