@@ -52,7 +52,7 @@ var TrainNotifier;
         WebApi.prototype.getBerthContents = function (berth) {
             return $.getJSON(this.getBaseUrl() + "/Td/Berth/" + berth, this.getArgs());
         };
-        WebApi.tiplocsLocalStorageKey = "tn-tiplocs";
+        WebApi.tiplocsLocalStorageKey = "wt-tiplocs";
         return WebApi;
     })();
     TrainNotifier.WebApi = WebApi;

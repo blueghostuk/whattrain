@@ -21,7 +21,7 @@ module TrainNotifier {
 
     export class WebApi implements IWebApi {
 
-        private static tiplocsLocalStorageKey = "tn-tiplocs";
+        private static tiplocsLocalStorageKey = "wt-tiplocs";
 
         constructor(public serverSettings?: ServerSettings) {
             if (!serverSettings) {
