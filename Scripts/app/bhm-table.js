@@ -19,6 +19,7 @@ $(function () {
     platform4.addSegment("C", "BN-0229");
     var platform5 = new Platform("5");
     platform5.addSegment("A", "BN-0176");
+    platform5.addSegment("M", "BN-0201");
     platform5.addSegment("B", "BN-0228");
     var platform6 = new Platform("6");
     platform6.addSegment("A", "BN-0172");
