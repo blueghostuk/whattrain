@@ -44,6 +44,11 @@ class StationLoader {
                                     if (berthData.m_Item2)
                                         obj.segment.train.id(berthData.m_Item2);
                                 }
+                            }).fail(() => {
+                                obj.segment.train.reset();
+                                if (berthData.m_Item2)
+                                    obj.segment.train.id(berthData.m_Item2);
+                                return $.Deferred().resolve();
                             });
                         } else if (berthData.m_Item2) {
                             return webApi.getTrainMovementLink(berthData.m_Item2, obj.crsCode, obj.segment.platform).done((link) => {
@@ -56,6 +61,10 @@ class StationLoader {
                                     obj.segment.train.reset();
                                     obj.segment.train.id(berthData.m_Item2);
                                 }
+                            }).fail(() => {
+                                obj.segment.train.reset();
+                                obj.segment.train.id(berthData.m_Item2);
+                                return $.Deferred().resolve();
                             });
                         } else {
                             obj.segment.train.reset();

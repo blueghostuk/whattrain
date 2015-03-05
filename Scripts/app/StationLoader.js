@@ -42,6 +42,11 @@ var StationLoader = (function () {
                                     if (berthData.m_Item2)
                                         obj.segment.train.id(berthData.m_Item2);
                                 }
+                            }).fail(function () {
+                                obj.segment.train.reset();
+                                if (berthData.m_Item2)
+                                    obj.segment.train.id(berthData.m_Item2);
+                                return $.Deferred().resolve();
                             });
                         }
                         else if (berthData.m_Item2) {
@@ -56,6 +61,10 @@ var StationLoader = (function () {
                                     obj.segment.train.reset();
                                     obj.segment.train.id(berthData.m_Item2);
                                 }
+                            }).fail(function () {
+                                obj.segment.train.reset();
+                                obj.segment.train.id(berthData.m_Item2);
+                                return $.Deferred().resolve();
                             });
                         }
                         else {
