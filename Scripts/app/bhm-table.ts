@@ -4,6 +4,9 @@
 
     var platform1 = new Platform("1");
     platform1.addSegment("A", "BN-0181");
+    platform1.addSegment("A", "BN-0209");
+    platform1.addSegment("M", "BN-0205");
+    platform1.addSegment("B", "BN-0149");
     platform1.addSegment("B", "BN-0240");
 
     var platform2 = new Platform("2");
