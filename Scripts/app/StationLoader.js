@@ -16,7 +16,7 @@ var StationLoader = (function () {
             for (var j = 0; j < platform.segments.length; j++) {
                 var segment = platform.segments[j];
                 if (segment.berth) {
-                    promises.push(StationLoader.getBerthContents(segment));
+                    promises.push(StationLoader.getBerthContents(segment).getData());
                 }
             }
         }
@@ -41,7 +41,7 @@ var StationLoader = (function () {
                                 var origin = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleFirst.TiplocStanoxCode, train.Tiplocs);
                                 obj.segment.train.from(origin.StationName);
                                 var dest = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleLast.TiplocStanoxCode, train.Tiplocs);
-                                obj.segment.train.from(dest.StationName);
+                                obj.segment.train.to(dest.StationName);
                             });
                         }
                         else if (berthData.m_Item2) {
@@ -57,7 +57,7 @@ var StationLoader = (function () {
                 });
             }
         };
-        return obj.getData();
+        return obj;
     };
     return StationLoader;
 })();
