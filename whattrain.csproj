@@ -101,10 +101,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bhm\index.html" />
-    <Content Include="bhm\table.html" />
     <Content Include="Content\app\index.css" />
-    <Content Include="wvh\table.html" />
-    <Content Include="_includes\bhm.svg" />
+    <Content Include="wvh\index.html" />
     <Content Include="_includes\eus.svg" />
     <Content Include="_includes\table.html" />
     <Content Include="_includes\wvh.svg" />
@@ -141,7 +139,6 @@
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="wvh\index.html" />
     <Content Include="_includes\ads.html" />
     <Content Include="_includes\analytics.html" />
     <Content Include="_includes\end.html" />
