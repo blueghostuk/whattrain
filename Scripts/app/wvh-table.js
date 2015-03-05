@@ -1,5 +1,5 @@
 $(function () {
-    var wolverhampton = new Station("Wolverhampton");
+    var wolverhampton = new Station("Wolverhampton", "WVH");
     var platform1 = new Platform("1");
     platform1.addSegment("", "WO-0082");
     var platform2 = new Platform("2");

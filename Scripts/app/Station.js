@@ -1,7 +1,8 @@
 var Station = (function () {
-    function Station(name, platforms) {
+    function Station(name, crsCode, platforms) {
         if (platforms === void 0) { platforms = []; }
         this.name = name;
+        this.crsCode = crsCode;
         this.platforms = platforms;
     }
     Object.defineProperty(Station.prototype, "segments", {

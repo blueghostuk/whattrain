@@ -11,7 +11,7 @@ class Station {
         return segments;
     }
 
-    constructor(public name: string, public platforms: Platform[] = []) { }
+    constructor(public name: string, public crsCode: string, public platforms: Platform[] = []) { }
 
     public addPlatform(name: string, segments?: PlatformSegment[]) {
         this.platforms.push(new Platform(name, segments));
