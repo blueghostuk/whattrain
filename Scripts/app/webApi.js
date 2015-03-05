@@ -23,13 +23,13 @@ var TrainNotifier;
                     return $.Deferred().resolve(JSON.parse(stations)).promise();
                 }
                 else {
-                    return $.getJSON(this.getBaseUrl() + "/Stanox/", this.getArgs()).done(function (stations) {
+                    return $.getJSON("" + this.getBaseUrl() + "/Stanox/", this.getArgs()).done(function (stations) {
                         localStorage.setItem(WebApi.tiplocsLocalStorageKey, JSON.stringify(stations));
                         return $.Deferred().resolve(stations).promise();
                     });
                 }
             }
-            return $.getJSON(this.getBaseUrl() + "/Station/", this.getArgs());
+            return $.getJSON("" + this.getBaseUrl() + "/Station/", this.getArgs());
         };
         WebApi.prototype.getStations = function () {
             return this.getTiplocs();
@@ -47,10 +47,13 @@ var TrainNotifier;
             }
         };
         WebApi.prototype.getTrainMovementByUid = function (uid, date) {
-            return this.getTrainMovementResult($.getJSON(this.getBaseUrl() + "/TrainMovement/Uid/" + uid + "/" + date, this.getArgs()));
+            return this.getTrainMovementResult($.getJSON("" + this.getBaseUrl() + "/TrainMovement/Uid/" + uid + "/" + date, this.getArgs()));
+        };
+        WebApi.prototype.getTrainMovementLink = function (headcode, crsCode, platform) {
+            return $.getJSON("" + this.getBaseUrl() + "/TrainMovement/Headcode/" + headcode + "/" + crsCode + "/" + platform + "/", this.getArgs());
         };
         WebApi.prototype.getBerthContents = function (berth) {
-            return $.getJSON(this.getBaseUrl() + "/Td/Berth/" + berth, this.getArgs());
+            return $.getJSON("" + this.getBaseUrl() + "/Td/Berth/" + berth, this.getArgs());
         };
         WebApi.tiplocsLocalStorageKey = "wt-tiplocs";
         return WebApi;

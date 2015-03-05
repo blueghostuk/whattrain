@@ -3,6 +3,9 @@
 /// <reference path="../typings/moment/moment.d.ts" />
 
 interface IWebApi {
+
+    getTrainMovementLink(headcode: string, crsCode: string, platform: string): JQueryPromise<TrainMovementLink>;
+
     getTrainMovementByUid(uid: string, date: string): JQueryPromise<SingleTrainMovementResult>;
 
     getBerthContents(berth: string): JQueryPromise<BerthContents>;
@@ -30,7 +33,7 @@ module TrainNotifier {
         }
 
         private getBaseUrl() {
-            return "http://" + this.serverSettings.apiUrl;
+            return `http://${this.serverSettings.apiUrl}`;
         }
 
         private getArgs() {
@@ -46,14 +49,14 @@ module TrainNotifier {
                 if (stations) {
                     return $.Deferred().resolve(JSON.parse(stations)).promise();
                 } else {
-                    return $.getJSON(this.getBaseUrl() + "/Stanox/", this.getArgs())
+                    return $.getJSON(`${this.getBaseUrl()}/Stanox/`, this.getArgs())
                         .done(function (stations: StationTiploc[]) {
                         localStorage.setItem(WebApi.tiplocsLocalStorageKey, JSON.stringify(stations));
                         return $.Deferred<StationTiploc[]>().resolve(stations).promise();
                     });
                 }
             }
-            return $.getJSON(this.getBaseUrl() + "/Station/", this.getArgs());
+            return $.getJSON(`${this.getBaseUrl()}/Station/`, this.getArgs());
         }
 
         private getStations() {
@@ -73,11 +76,15 @@ module TrainNotifier {
         }
 
         getTrainMovementByUid(uid: string, date: string) {
-            return this.getTrainMovementResult($.getJSON(this.getBaseUrl() + "/TrainMovement/Uid/" + uid + "/" + date, this.getArgs()));
+            return this.getTrainMovementResult($.getJSON(`${this.getBaseUrl()}/TrainMovement/Uid/${uid}/${date}`, this.getArgs()));
+        }
+
+        getTrainMovementLink(headcode: string, crsCode: string, platform: string) {
+            return $.getJSON(`${this.getBaseUrl() }/TrainMovement/Headcode/${headcode}/${crsCode}/${platform}/`, this.getArgs());
         }
 
         getBerthContents(berth: string) {
-            return $.getJSON(this.getBaseUrl() + "/Td/Berth/" + berth, this.getArgs());
+            return $.getJSON(`${this.getBaseUrl()}/Td/Berth/${berth}`, this.getArgs());
         }
     }
 }
@@ -228,4 +235,9 @@ interface TrainMovementResult {
 interface SingleTrainMovementResult {
     Movement: TrainMovementResult;
     Tiplocs: StationTiploc[];
+}
+
+interface TrainMovementLink {
+    TrainUid: string;
+    OriginDepartTimestamp: string;
 }
