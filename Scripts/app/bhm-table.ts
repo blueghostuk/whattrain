@@ -45,7 +45,8 @@
     platform9.addSegment("B", "BN-0217");
 
     var platform10 = new Platform("10");
-    platform10.addSegment("A", "BN-0163");
+    platform10.addSegment("A", "BN-0163"); 
+    platform10.addSegment("M", "BN-0184");
     platform10.addSegment("B", "BN-0082");
 
     var platform11 = new Platform("11");
