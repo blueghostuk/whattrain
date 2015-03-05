@@ -3,9 +3,9 @@ $(function () {
     var platform1 = new Platform("1");
     platform1.addSegment("", "WO-0082");
     var platform2 = new Platform("2");
-    platform2.addSegment("", "WO-0085");
+    platform2.addSegment("", "WO-0097");
     var platform3 = new Platform("3");
-    platform3.addSegment("", "WO-0097");
+    platform3.addSegment("", "WO-0098");
     var platform4 = new Platform("4");
     platform4.addSegment("", "WO-0105");
     var platform5 = new Platform("5");
