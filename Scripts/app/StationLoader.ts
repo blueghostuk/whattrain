@@ -111,5 +111,7 @@ class StationLoader {
                 segment.train.departure("Terminates here");
             }
         }
+
+        segment.train.ecs(train.Movement.Schedule.CategoryTypeId !== 3);
     }
 } 

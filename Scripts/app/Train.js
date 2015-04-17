@@ -6,6 +6,7 @@ var Train = (function () {
         this.from = ko.observable(null).extend({ rateLimit: 500 });
         this.to = ko.observable(null).extend({ rateLimit: 500 });
         this.departure = ko.observable(null).extend({ rateLimit: 500 });
+        this.ecs = ko.observable(null).extend({ rateLimit: 500 });
     }
     Train.prototype.reset = function () {
         this.id(null);
@@ -14,6 +15,7 @@ var Train = (function () {
         this.from(null);
         this.to(null);
         this.departure(null);
+        this.ecs(null);
     };
     return Train;
 })();

@@ -127,10 +127,6 @@ module TrainNotifier {
         Arrival = 2
     }
 
-    export class CancellationCodes {
-        public static EnRoute = "EN ROUTE";
-    }
-
     export class StationTiplocHelper {
         public static findStationTiplocs(stanoxCode: string, tiplocs: StationTiploc[]) {
             return tiplocs.filter(function (element: StationTiploc) {
@@ -144,7 +140,7 @@ module TrainNotifier {
             return null;
         }
         public static tiplocDisplayName(tiploc: StationTiploc) {
-            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName : tiploc.Description : "Unknown";
+            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName.toLowerCase() : tiploc.Description.toLowerCase() : "Unknown";
         }
     }
 }
@@ -220,6 +216,7 @@ interface RunningScheduleTrain {
     EndDate: string;
     AtocCode: AtocCode;
     ScheduleStatusId: number;
+    CategoryTypeId: number;
     Speed?: number;
     Stops: RunningScheduleTrainStop[];
 }

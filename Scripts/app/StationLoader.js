@@ -108,6 +108,7 @@ var StationLoader = (function () {
                 segment.train.departure("Terminates here");
             }
         }
+        segment.train.ecs(train.Movement.Schedule.CategoryTypeId !== 3);
     };
     return StationLoader;
 })();

@@ -1,1 +1,1 @@
-﻿body{padding-top:70px}div.platform{text-align:center}.occupied{cursor:pointer}
+﻿body{padding-top:70px}div.platform{text-align:center}td .occupied{cursor:pointer}td .ecs{font-style:italic}td .station{text-transform:capitalize}

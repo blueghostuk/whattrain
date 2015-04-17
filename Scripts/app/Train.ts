@@ -6,6 +6,7 @@ class Train {
     public from = ko.observable<string>(null).extend({ rateLimit: 500 });
     public to = ko.observable<string>(null).extend({ rateLimit: 500 });
     public departure = ko.observable<string>(null).extend({ rateLimit: 500 });
+    public ecs = ko.observable<boolean>(null).extend({ rateLimit: 500 });
 
     public reset() {
         this.id(null);
@@ -14,5 +15,6 @@ class Train {
         this.from(null);
         this.to(null);
         this.departure(null);
+        this.ecs(null);
     }
 } 

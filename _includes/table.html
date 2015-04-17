@@ -14,12 +14,12 @@
     <tbody data-bind="foreach: segments">
         <tr>
             <td data-bind="text: name"></td>
-            <td data-bind="text: train.id, css: { occupied: train.id }"></td>
-            <td data-bind="text: train.operator, css: { occupied: train.id }"></td>
-            <td data-bind="text: train.arrival, css: { occupied: train.id }"></td>
-            <td data-bind="text: train.from, css: { occupied: train.id }"></td>
-            <td data-bind="text: train.to, css: { occupied: train.id }"></td>
-            <td data-bind="text: train.departure, css: { occupied: train.id }"></td>
+            <td data-bind="text: train.id, css: { occupied: train.id, ecs: train.ecs }"></td>
+            <td data-bind="text: train.operator, css: { occupied: train.id, ecs: train.ecs }"></td>
+            <td data-bind="text: train.arrival, css: { occupied: train.id, ecs: train.ecs }"></td>
+            <td data-bind="text: train.from, css: { occupied: train.id, ecs: train.ecs }" class="station"></td>
+            <td data-bind="text: train.to, css: { occupied: train.id, ecs: train.ecs }" class="station"></td>
+            <td data-bind="text: train.departure, css: { occupied: train.id, ecs: train.ecs }"></td>
             <!--<td>
                 <ul class="inline" data-bind="foreach: otherSite">
                     <li>

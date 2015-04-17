@@ -67,13 +67,6 @@ var TrainNotifier;
         EventType[EventType["Arrival"] = 2] = "Arrival";
     })(TrainNotifier.EventType || (TrainNotifier.EventType = {}));
     var EventType = TrainNotifier.EventType;
-    var CancellationCodes = (function () {
-        function CancellationCodes() {
-        }
-        CancellationCodes.EnRoute = "EN ROUTE";
-        return CancellationCodes;
-    })();
-    TrainNotifier.CancellationCodes = CancellationCodes;
     var StationTiplocHelper = (function () {
         function StationTiplocHelper() {
         }
@@ -89,7 +82,7 @@ var TrainNotifier;
             return null;
         };
         StationTiplocHelper.tiplocDisplayName = function (tiploc) {
-            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName : tiploc.Description : "Unknown";
+            return tiploc != null ? tiploc.StationName != null ? tiploc.StationName.toLowerCase() : tiploc.Description.toLowerCase() : "Unknown";
         };
         return StationTiplocHelper;
     })();
