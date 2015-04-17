@@ -29,6 +29,7 @@ module TrainNotifier {
             return null;
         }
     }
+
     export class DateTimeFormats {
         public static timeUrlFormat = "HH-mm";
         public static timeFormat = "HH:mm:ss";
@@ -59,7 +60,7 @@ module TrainNotifier {
             return null;
         }
 
-        public static formatTimeDuration(duration: Duration): string {
+        public static formatTimeDuration(duration: moment.Duration): string {
             if (duration) {
                 return DateTimeFormats.padString(duration.hours().toString()) + ":" + DateTimeFormats.padString(duration.minutes().toString());
             }
@@ -67,7 +68,7 @@ module TrainNotifier {
             return null;
         }
 
-        public static formatTimeMoment(timeMoment: Moment, format: string = TrainNotifier.DateTimeFormats.shortTimeFormat): string {
+        public static formatTimeMoment(timeMoment: moment.Moment, format: string = TrainNotifier.DateTimeFormats.shortTimeFormat): string {
             if (timeMoment && timeMoment.isValid()) {
                 var ts = timeMoment.format(format);
                 if (timeMoment.seconds() === 30) {

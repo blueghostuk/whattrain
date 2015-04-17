@@ -12,11 +12,11 @@ interface IWebApi {
 }
 
 interface IEstimate {
-    Arrival?: Moment;
-    PublicArrival?: Moment;
-    Departure?: Moment;
-    PublicDeparture?: Moment;
-    Pass?: Moment;
+    Arrival?: moment.Moment;
+    PublicArrival?: moment.Moment;
+    Departure?: moment.Moment;
+    PublicDeparture?: moment.Moment;
+    Pass?: moment.Moment;
     CurrentDelay: number;
 }
 
