@@ -47,6 +47,7 @@ packages
 #program bin
 bin/*.dll
 bin/*.dll.config
+bin/*.xml
 
 # Local App.config transformation
 *.Debug-Local.config
