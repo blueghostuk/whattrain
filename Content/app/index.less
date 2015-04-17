@@ -2,20 +2,22 @@
     padding-top: 70px;
 }
 
-div.platform {
-    text-align: center;
+div {
+    &.platform {
+        text-align: center;
+    }
 }
 
 td {
-    .occupied {
+    &.occupied {
         cursor: pointer;
     }
 
-    .ecs {
+    &.ecs {
         font-style: italic;
     }
 
-    .station {
+    &.station {
         text-transform: capitalize;
     }
 }

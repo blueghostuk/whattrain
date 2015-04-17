@@ -4,12 +4,12 @@
 div.platform {
   text-align: center;
 }
-td .occupied {
+td.occupied {
   cursor: pointer;
 }
-td .ecs {
+td.ecs {
   font-style: italic;
 }
-td .station {
+td.station {
   text-transform: capitalize;
 }
