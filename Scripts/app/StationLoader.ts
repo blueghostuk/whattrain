@@ -83,9 +83,7 @@ class StationLoader {
     private static showTrainMovement(train: SingleTrainMovementResult, segment: PlatformSegment) {
         segment.train.operator(train.Movement.Schedule.AtocCode.Name);
         var mostRecentStop = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
-        if (mostRecentStop != null) {
-            //obj.segment.train
-        }
+
         var scheduleFirst = train.Movement.Schedule.Stops[0];
         var scheduleLast = train.Movement.Schedule.Stops[train.Movement.Schedule.Stops.length - 1];
 
@@ -97,5 +95,21 @@ class StationLoader {
 
         var arrival = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
         segment.train.arrival(moment(arrival.ActualTimestamp).format(TrainNotifier.DateTimeFormats.timeFormat));
+
+        var departures = train.Movement.Schedule.Stops.filter((s) => s.StopNumber == mostRecentStop.ScheduleStopNumber);
+        if (departures.length == 1) {
+            var dept = departures[0];
+            var deptTime: moment.Moment;
+            if (dept.PublicDeparture) {
+                deptTime = moment(dept.PublicDeparture);
+            } else if (dept.Pass) {
+                deptTime = moment(dept.Pass);
+            }
+            if (deptTime !== void 0) {
+                segment.train.departure(deptTime.format(TrainNotifier.DateTimeFormats.timeFormat));
+            } else {
+                segment.train.departure("Terminates here");
+            }
+        }
     }
 } 

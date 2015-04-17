@@ -83,8 +83,6 @@ var StationLoader = (function () {
     StationLoader.showTrainMovement = function (train, segment) {
         segment.train.operator(train.Movement.Schedule.AtocCode.Name);
         var mostRecentStop = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
-        if (mostRecentStop != null) {
-        }
         var scheduleFirst = train.Movement.Schedule.Stops[0];
         var scheduleLast = train.Movement.Schedule.Stops[train.Movement.Schedule.Stops.length - 1];
         var origin = TrainNotifier.StationTiplocHelper.findStationTiploc(scheduleFirst.TiplocStanoxCode, train.Tiplocs);
@@ -93,6 +91,23 @@ var StationLoader = (function () {
         segment.train.to(TrainNotifier.StationTiplocHelper.tiplocDisplayName(dest));
         var arrival = train.Movement.Actual.Stops[train.Movement.Actual.Stops.length - 1];
         segment.train.arrival(moment(arrival.ActualTimestamp).format(TrainNotifier.DateTimeFormats.timeFormat));
+        var departures = train.Movement.Schedule.Stops.filter(function (s) { return s.StopNumber == mostRecentStop.ScheduleStopNumber; });
+        if (departures.length == 1) {
+            var dept = departures[0];
+            var deptTime;
+            if (dept.PublicDeparture) {
+                deptTime = moment(dept.PublicDeparture);
+            }
+            else if (dept.Pass) {
+                deptTime = moment(dept.Pass);
+            }
+            if (deptTime !== void 0) {
+                segment.train.departure(deptTime.format(TrainNotifier.DateTimeFormats.timeFormat));
+            }
+            else {
+                segment.train.departure("Terminates here");
+            }
+        }
     };
     return StationLoader;
 })();
