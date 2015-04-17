@@ -23,6 +23,7 @@ var StationLoader = (function () {
         return $.when.apply($, promises).always(function () { return $(".fa.fa-refresh").addClass("hide"); });
     };
     StationLoader.getBerthContents = function (crsCode, segment) {
+        var webApi = new TrainNotifier.WebApi();
         var obj = {
             crsCode: crsCode,
             segment: segment,

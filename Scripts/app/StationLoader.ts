@@ -9,7 +9,7 @@ class StationLoader {
     }
 
     private static updateData(station: Station) {
-        var webApi: IWebApi = new TrainNotifier.WebApi();
+        var webApi = new TrainNotifier.WebApi();
         var promises: JQueryPromise<any>[] = [];
         $(".fa.fa-refresh").removeClass("hide");
         for (var i = 0; i < station.platforms.length; i++) {
@@ -26,6 +26,7 @@ class StationLoader {
     }
 
     private static getBerthContents(crsCode: string, segment: PlatformSegment) {
+        var webApi = new TrainNotifier.WebApi();
         var obj = {
             crsCode: crsCode,
             segment: segment,
