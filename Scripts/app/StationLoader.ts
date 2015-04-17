@@ -99,14 +99,14 @@ class StationLoader {
         var departures = train.Movement.Schedule.Stops.filter((s) => s.StopNumber == mostRecentStop.ScheduleStopNumber);
         if (departures.length == 1) {
             var dept = departures[0];
-            var deptTime: moment.Moment;
+            var deptTime: string;
             if (dept.PublicDeparture) {
-                deptTime = moment(dept.PublicDeparture);
+                deptTime = dept.PublicDeparture;
             } else if (dept.Pass) {
-                deptTime = moment(dept.Pass);
+                deptTime = dept.Pass;
             }
             if (deptTime !== void 0) {
-                segment.train.departure(deptTime.format(TrainNotifier.DateTimeFormats.timeFormat));
+                segment.train.departure(deptTime);
             } else {
                 segment.train.departure("Terminates here");
             }

@@ -96,13 +96,13 @@ var StationLoader = (function () {
             var dept = departures[0];
             var deptTime;
             if (dept.PublicDeparture) {
-                deptTime = moment(dept.PublicDeparture);
+                deptTime = dept.PublicDeparture;
             }
             else if (dept.Pass) {
-                deptTime = moment(dept.Pass);
+                deptTime = dept.Pass;
             }
             if (deptTime !== void 0) {
-                segment.train.departure(deptTime.format(TrainNotifier.DateTimeFormats.timeFormat));
+                segment.train.departure(deptTime);
             }
             else {
                 segment.train.departure("Terminates here");
