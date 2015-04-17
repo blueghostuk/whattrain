@@ -2,13 +2,13 @@
 layout: default
 title: whattrain.co.uk - London Euston
 menu: <li><a href="/">Home</a></li><li class="active"><a>London Euston</a></li>
-js:             
-    - src: app/Train.js 
-    - src: app/PlatformSegment.js 
-    - src: app/Platform.js   
-    - src: app/Station.js    
+js:
+    - src: app/Train.js
+    - src: app/PlatformSegment.js
+    - src: app/Platform.js
+    - src: app/Station.js
     - src: app/StationLoader.js
-    - src: app/eus-table.js 
+    - src: app/eus-table.js
 ---
 <div class="row">
     <h4>
@@ -16,7 +16,10 @@ js:
         <span class="fa fa-refresh fa-spin"></span>
     </h4>
     <hr />
-    <div class="alert alert-info">Click on an identifier (e.g. 1D56) to view more train details</div>
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        Click on an identifier (e.g. 1D56) to view more train details
+    </div>
 </div>
 <div class="row" style="overflow:auto;">
     {% include table.html %}
