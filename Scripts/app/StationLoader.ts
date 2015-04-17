@@ -112,6 +112,6 @@ class StationLoader {
             }
         }
 
-        segment.train.ecs(train.Movement.Schedule.CategoryTypeId !== 16 && train.Movement.Schedule.CategoryTypeId !== 17);
+        segment.train.ecs(train.Movement.Schedule.CategoryTypeId == 16 || train.Movement.Schedule.CategoryTypeId == 17);
     }
 } 
